@@ -1,5 +1,13 @@
 class Dialog extends BaseComponent {
-  constructor({ title = null, icon = null, buttons = [], type = null, modal = true, body = null }) {
+  constructor({
+    title = null,
+    icon = null,
+    buttons = [],
+    type = null,
+    modal = true,
+    body = null,
+    size = { width: null, height: null },
+  }) {
     super();
 
     this.title = title ?? 'No Title';
@@ -7,6 +15,7 @@ class Dialog extends BaseComponent {
     this.buttons = buttons;
     this.type = type ?? 'info';
     this.modal = modal;
+    this.size = size;
     this.body = body;
     this.mainNode = null;
     this.Rendered = false;
@@ -33,6 +42,9 @@ class Dialog extends BaseComponent {
 
     const container = document.createElement('div');
     container.classList.add('container');
+
+    if (this.size.width) container.style.width = this.size.width;
+    if (this.size.height) container.style.height = this.size.height;
 
     dialog.appendChild(container);
 
@@ -88,6 +100,8 @@ class Dialog extends BaseComponent {
       e.preventDefault();
       e.stopPropagation();
 
+      if (e.target === buttons) return;
+
       const btn = e.target.closest('button');
 
       this.trigger('buttonclick', { target: btn });
@@ -111,8 +125,8 @@ class Dialog extends BaseComponent {
 }
 
 class Info extends Dialog {
-  constructor({ title, message }) {
-    super({ title, message });
+  constructor({ title, message, size }) {
+    super({ title, message, size });
 
     this.icon = 'info';
     this.title = title ?? 'Information';
@@ -125,8 +139,8 @@ class Info extends Dialog {
 }
 
 class Alert extends Dialog {
-  constructor({ title, message }) {
-    super({ title, message });
+  constructor({ title, message, size }) {
+    super({ title, message, size });
 
     this.icon = 'dangerous';
     this.title = title ?? 'Alert';
@@ -140,8 +154,8 @@ class Alert extends Dialog {
 }
 
 class Warn extends Dialog {
-  constructor({ title, message }) {
-    super({ title, message });
+  constructor({ title, message, size }) {
+    super({ title, message, size });
 
     this.icon = 'warning';
     this.title = title ?? 'Alert';
@@ -155,8 +169,8 @@ class Warn extends Dialog {
 }
 
 class Confirm extends Dialog {
-  constructor({ title, message }) {
-    super({ title, message });
+  constructor({ title, message, size }) {
+    super({ title, message, size });
 
     this.icon = 'help';
     this.title = title ?? 'Confirm';

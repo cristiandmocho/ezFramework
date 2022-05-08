@@ -2,10 +2,11 @@
   border-radius: 6px;
   padding: 0.35em;
   display: grid;
-  grid-template-columns: min-content auto;
+  grid-auto-flow: column;
+  justify-content: center;
   gap: 4px;
   font-size: 0.9em;
-  border: solid 1px #6e948e;
+  border: solid 1px rgba(0, 0, 0, 0.125);
   cursor: pointer;
 
   i {
