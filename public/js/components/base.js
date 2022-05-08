@@ -3,30 +3,26 @@ class BaseComponent {
     this.events = [];
   }
 
-  on(eventName, callBack) {
-    const ce = new CustomEvent(eventName, { bubbles: true, cancelable: true, detail: this });
+  on(type, callBack) {
+    this.off(type);
 
-    this.addEventListener(eventName, callBack);
-    this.events.push({ event: ce, callBack });
-
-    return this;
-  }
-
-  off(eventName) {
-    const ce = this.#findEvent(eventName);
-
-    this.removeEventListener(eventName, ce.event.callBack);
-    this.events = this.events.filter(e => e.event.type !== eventName);
+    const event = { type, callBack };
+    this.events.push(event);
 
     return this;
   }
 
-  trigger(eventName) {
-    const ce = this.#findEvent(eventName);
-    this.dispatchEvent(ce.event);
+  off(type) {
+    this.events = this.events.filter(e => e.type !== type);
+    return this;
   }
 
-  #findEvent(eventname) {
-    return this.events.find(e => e.event.type === eventname);
+  trigger(type, data) {
+    const event = this.#findEvent(type);
+    if (event?.callBack) event.callBack(data);
+  }
+
+  #findEvent(type) {
+    return this.events.find(e => e.type === type);
   }
 }
