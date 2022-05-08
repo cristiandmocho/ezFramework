@@ -1,0 +1,32 @@
+.button {
+  border-radius: 6px;
+  padding: 0.35em;
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 4px;
+  font-size: 0.9em;
+  border: solid 1px #6e948e;
+  cursor: pointer;
+
+  i {
+    font-size: 1.2em;
+  }
+
+  &.primary {
+    background-color: #a6c9c3;
+  }
+
+  &.small {
+    font-size: 0.65em;
+    padding: 0.25em;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: #a6c9c3 0 0 0 2px;
+  }
+
+  &:active {
+    background-color: #6e948e;
+  }
+}

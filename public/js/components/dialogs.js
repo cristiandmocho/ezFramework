@@ -62,6 +62,7 @@ class Dialog extends BaseComponent {
     this.buttons.forEach(btn => {
       const button = document.createElement('button');
       button.type = 'button';
+      button.classList.add('button');
 
       if (btn.type) button.classList.add(btn.type);
 
@@ -161,7 +162,7 @@ class Confirm extends Dialog {
     this.title = title ?? 'Confirm';
     this.body = message;
     this.buttons = [
-      { name: 'btnYes', label: 'Yes', icon: 'check' },
+      { name: 'btnYes', label: 'Yes', icon: 'check', type: 'primary' },
       { name: 'btnNo', label: 'No', icon: 'close' },
     ];
 
