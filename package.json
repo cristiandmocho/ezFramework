@@ -1,0 +1,16 @@
+{
+  "name": "ezprojects-web",
+  "version": "0.2.0",
+  "description": "",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "compile-scss": "sass sass/main.scss public/css/main.css --no-source-map --style=compressed -w"
+  },
+  "keywords": [],
+  "author": "Cristian Mocho",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.51.0"
+  }
+}
