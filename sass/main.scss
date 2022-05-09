@@ -17,3 +17,11 @@ body {
 
 @import 'components/button';
 @import 'components/dialog';
+@import 'components/floatmenu';
+
+.context {
+  padding: 2em;
+  border: solid 1px red;
+  display: inline-block;
+  cursor: pointer;
+}

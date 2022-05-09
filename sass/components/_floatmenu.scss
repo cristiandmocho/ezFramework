@@ -1,0 +1,48 @@
+.ez-floatmenu {
+  position: absolute;
+  display: grid;
+  grid-template-rows: max-content auto;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 5px 2px;
+
+  .buttons {
+    display: grid;
+
+    .menu-item {
+      padding: 0.5em;
+      background: none;
+      border: none;
+      display: grid;
+      grid-template-columns: min-content auto;
+      align-items: center;
+      justify-content: start;
+      font-size: 0.9em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.125);
+      }
+
+      i {
+        font-size: 1.3em;
+        width: 24px;
+      }
+    }
+  }
+
+  h5 {
+    background-color: #292929;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.5em;
+    font-size: 1em;
+    user-select: none;
+    text-align: center;
+  }
+
+  hr {
+    width: 100%;
+    margin: 2px;
+  }
+}
